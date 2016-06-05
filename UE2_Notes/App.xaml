@@ -1,0 +1,15 @@
+﻿<Application
+    x:Class="UE2_Notes.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UE2_Notes"
+    RequestedTheme="Light"
+    xmlns:viewModels="using:UE2_Notes.ViewModel">
+    <Application.Resources>
+        <Style x:Key="StretchedItemStyle" TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+        <x:String x:Key="AppName">Notes</x:String>
+        <viewModels:ViewModelLocator x:Key="Locator" />
+    </Application.Resources>
+</Application>
