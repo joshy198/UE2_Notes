@@ -27,6 +27,6 @@ namespace UE2_Notes
         {
             this.InitializeComponent();
         }
-        public MainViewModel MVM => new MainViewModel();
+        public MainViewModel MVM => DataContext as MainViewModel;
     }
 }

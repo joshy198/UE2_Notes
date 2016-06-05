@@ -27,6 +27,6 @@ namespace UE2_Notes.View
         {
             this.InitializeComponent();
         }
-        public DetailViewModel DVM => new DetailViewModel();
+        public DetailViewModel DVM => DataContext as DetailViewModel;
     }
 }

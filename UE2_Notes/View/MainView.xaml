@@ -44,11 +44,8 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <AppBarButton Grid.Column="0"
-                              Click="{x:Bind MVM.Search}"
-                              x:Name="Look" 
-                              Icon="Find"
-                              Label="Search"/>
+                <Image Grid.Column="0"
+                              Source="Assets/search.png"/>
                 <TextBox Grid.Column="1"
                          HorizontalAlignment="Stretch"
                          Text="{Binding SearchString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

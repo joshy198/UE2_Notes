@@ -41,11 +41,11 @@ namespace UE2_Notes.ViewModel
             NoteData.Max_Notes = 100;
             notes = new ObservableCollection<Note>();
             SearchString = "";
-            this.PropertyChanged += (sender, args) =>
+            /*this.PropertyChanged += (sender, args) =>
             {
                 if (args.PropertyName == "SearchFor") RaisePropertyChanged(nameof(notes));
-            };
-            var n = new Note();
+            };*/
+            /*var n = new Note();
             n.Name = "Einkaufsliste";
             n.Notes = "Eier, Milch, Gemüse";
             n.Date = DateTime.Now;
@@ -54,11 +54,11 @@ namespace UE2_Notes.ViewModel
             n.Name = "Wichtiges";
             n.Notes = "Klaus abholen, Tanken fahren, Klaus abholen, Tanken fahren, Klaus abholen, Tanken fahren, Klaus abholen, Tanken fahren";
             n.Date = DateTime.Now;
-            NoteData.Notes.Add(n);
+            NoteData.Notes.Add(n);*/
         }
         public void Search()
         {
-            RaisePropertyChanged(nameof(Notes));
+            RaisePropertyChanged(nameof(NoteData.Notes));
         }
     }
 }

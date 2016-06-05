@@ -24,6 +24,7 @@ namespace UE2_Notes.ViewModel
             NoteData.Notes.Add(n);
             Header = string.Empty;
             MyNote = string.Empty;
+            navigation.NavigateBack();
         }
     }
 }

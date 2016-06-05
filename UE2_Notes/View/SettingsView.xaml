@@ -41,6 +41,7 @@
                           Icon="Save"
                           Label="Save"/>
                     <AppBarButton x:Name="DiscardSettings"
+                                  Click="{x:Bind SVM.navigation.NavigateBack}"
                                   Icon="Cancel"
                                   Label="Discard"  />
                 </StackPanel>
