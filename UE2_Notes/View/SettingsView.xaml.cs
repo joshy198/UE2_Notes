@@ -27,6 +27,6 @@ namespace UE2_Notes.View
         {
             this.InitializeComponent();
         }
-        public SettingsViewModel SVM => new SettingsViewModel();
+        public SettingsViewModel SVM => DataContext as SettingsViewModel;
     }
 }
