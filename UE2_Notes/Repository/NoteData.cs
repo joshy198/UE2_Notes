@@ -22,5 +22,17 @@ namespace UE2_Notes.Repository
             }
         }
         public static int Max_Notes {get;set;}
+        public static bool RemoveNote(Note n)
+        {
+            foreach (Note nt in Notes)
+            {
+                if (nt.Date == n.Date && nt.Notes == n.Notes && n.Name == nt.Name)
+                {
+                    notes.Remove(n);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

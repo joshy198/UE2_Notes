@@ -16,18 +16,7 @@ namespace UE2_Notes.ViewModel
     {
         private ObservableCollection<Note> notes;
         public LocalNavigation navigation;
-        private Note selectedNote;
-        public Note SelectedNote
-        {
-            set
-            {
-                if (selectedNote == value)
-                    selectedNote = null;
-                else
-                    selectedNote = value;
-            }
-            get { return selectedNote; }
-        }
+        public Note SelectedNote { get; set; }
         public bool ItemSelected { get { return SelectedNote != null; } }
         public ObservableCollection<Note> Notes
         {
@@ -69,6 +58,11 @@ namespace UE2_Notes.ViewModel
             n.Date = DateTime.Now;
             NoteData.Notes.Add(n);*/
         }
+        public void NewNote()
+        {
+            NoteData.SelectedNote = null;
+            navigation.NavigateToDetails();
+        }
         public void Search()
         {
             RaisePropertyChanged(nameof(NoteData.Notes));
@@ -76,10 +70,14 @@ namespace UE2_Notes.ViewModel
         public void EditNote()
         {
             NoteData.SelectedNote = SelectedNote;
+            navigation.NavigateToDetails();
+            SelectedNote = null;
+
         }
         public void RemoveNote()
         {
-            NoteData.Notes.Remove(SelectedNote);
+            NoteData.RemoveNote(SelectedNote);
+            SelectedNote = null;
         }
     }
 }

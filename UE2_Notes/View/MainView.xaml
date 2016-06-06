@@ -45,8 +45,11 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Image Grid.Column="0"
-                              Source="Assets/search.png"/>
+                       x:Name="image"
+                       Source="ms-appx:///Assets/search.png"/>
                 <TextBox Grid.Column="1"
+                         FontSize="25"
+                         Padding="25,12,0,0"
                          HorizontalAlignment="Stretch"
                          Text="{Binding SearchString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          VerticalAlignment="Stretch"
@@ -63,7 +66,7 @@
             <Grid Grid.Row="2" HorizontalAlignment="Stretch" Background="#e7e7e7">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <AppBarButton
-                          Click="{x:Bind MVM.navigation.NavigateToDetails}"
+                          Click="{x:Bind MVM.NewNote}"
                           x:Name="New" 
                           Icon="Add"
                           Label="New Note"/>
@@ -71,16 +74,18 @@
                         Click="{x:Bind MVM.EditNote}"
                         IsEnabled="{Binding ItemSelected}"
                         x:Name="Edit"
-                          Icon="Edit"
-                          Label="Edit"/>
+                        Icon="Edit"
+                        Label="Edit"/>
                     <AppBarButton
+                        Click="{x:Bind MVM.RemoveNote}"
+                        IsEnabled="{Binding ItemSelected}"
                           x:Name="Delete" 
                           Icon="Delete"
                           Label="Delete"/>
                     <AppBarButton 
                         Click="{x:Bind MVM.navigation.NavigateToSettings}"
-                          x:Name="SelectButton" Icon="Setting"
-                          Label="Settings"  />
+                        x:Name="SelectButton" Icon="Setting"
+                        Label="Settings"  />
                 </StackPanel>
             </Grid>
         </Grid>
