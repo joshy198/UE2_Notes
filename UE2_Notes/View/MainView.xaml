@@ -54,9 +54,11 @@
             </Grid>
             <Grid Grid.Row="1">
                 <ListView Height="Auto"
-                      ItemContainerStyle="{StaticResource StretchedItemStyle}"
-                      ItemTemplate="{StaticResource NoteTemplate}"
-                      ItemsSource="{x:Bind MVM.Notes}"/>
+                          ItemContainerStyle="{StaticResource StretchedItemStyle}"
+                          ItemTemplate="{StaticResource NoteTemplate}"
+                          ItemsSource="{x:Bind MVM.Notes}"
+                          SelectedItem="{Binding SelectedNote, Mode=TwoWay}"
+                          />
             </Grid>
             <Grid Grid.Row="2" HorizontalAlignment="Stretch" Background="#e7e7e7">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
@@ -66,7 +68,9 @@
                           Icon="Add"
                           Label="New Note"/>
                     <AppBarButton
-                          x:Name="Edit" 
+                        Click="{x:Bind MVM.EditNote}"
+                        IsEnabled="{Binding ItemSelected}"
+                        x:Name="Edit"
                           Icon="Edit"
                           Label="Edit"/>
                     <AppBarButton

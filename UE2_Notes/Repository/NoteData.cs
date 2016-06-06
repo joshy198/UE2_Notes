@@ -10,6 +10,7 @@ namespace UE2_Notes.Repository
 {
     public class NoteData
     {
+        public static Note SelectedNote { get; set; }
         private static ObservableCollection<Note> notes;
         public static ObservableCollection<Note> Notes
         {

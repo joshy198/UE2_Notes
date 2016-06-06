@@ -16,6 +16,19 @@ namespace UE2_Notes.ViewModel
     {
         private ObservableCollection<Note> notes;
         public LocalNavigation navigation;
+        private Note selectedNote;
+        public Note SelectedNote
+        {
+            set
+            {
+                if (selectedNote == value)
+                    selectedNote = null;
+                else
+                    selectedNote = value;
+            }
+            get { return selectedNote; }
+        }
+        public bool ItemSelected { get { return SelectedNote != null; } }
         public ObservableCollection<Note> Notes
         {
             get
@@ -59,6 +72,14 @@ namespace UE2_Notes.ViewModel
         public void Search()
         {
             RaisePropertyChanged(nameof(NoteData.Notes));
+        }
+        public void EditNote()
+        {
+            NoteData.SelectedNote = SelectedNote;
+        }
+        public void RemoveNote()
+        {
+            NoteData.Notes.Remove(SelectedNote);
         }
     }
 }
