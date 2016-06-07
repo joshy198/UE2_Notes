@@ -28,7 +28,7 @@
                 <Slider x:Name="Slider" Grid.Column="0"
                     Width="Auto" Padding="20,20,0,20"
                     Maximum="200"
-                    Minimum="0"
+                    Minimum="1"
                     Value="{Binding MaxNotes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Text="{Binding MaxNotes, Mode=OneWay}" Padding="15,15,20,15" Grid.Column="1" FontSize="30"/>
                 </Grid>

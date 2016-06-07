@@ -13,8 +13,8 @@
         <DataTemplate x:Key="NoteTemplate" x:DataType="models:Note">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -23,7 +23,10 @@
                 <Grid Grid.Row="0" Grid.Column="0">
                     <TextBlock Text="{x:Bind Name}" FontWeight="Bold" FontSize="20"/>
                 </Grid>
-                <Grid Grid.Row="1" Grid.Column="0">
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text="{x:Bind Date}"/>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                     <TextBlock Text="{x:Bind Disp_Notes}" FontSize="12"/>
                 </Grid>
             </Grid>
@@ -59,7 +62,7 @@
                 <ListView Height="Auto"
                           ItemContainerStyle="{StaticResource StretchedItemStyle}"
                           ItemTemplate="{StaticResource NoteTemplate}"
-                          ItemsSource="{x:Bind MVM.Notes}"
+                          ItemsSource="{x:Bind MVM.Notes, Mode=OneWay}"
                           SelectedItem="{Binding SelectedNote, Mode=TwoWay}"
                           />
             </Grid>

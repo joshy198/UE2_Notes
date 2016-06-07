@@ -23,10 +23,12 @@ namespace UE2_Notes.Model
 
         public string Disp_Notes {
             get {
+                if (Notes == null)
+                    Notes = "";
                 if (Notes.Length > 50)
-                    return Notes.Replace('\n', ' ').Remove(60)+"...";
+                    return Notes.Replace(System.Environment.NewLine, " ").Remove(60) + "...";
                 else
-                    return Notes.Replace('\n', ' ');
+                    return Notes.Replace(System.Environment.NewLine, " ");
             }
         }
     }

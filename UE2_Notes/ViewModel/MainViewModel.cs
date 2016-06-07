@@ -12,7 +12,7 @@ using UE2_Notes.View;
 
 namespace UE2_Notes.ViewModel
 {
-    public class MainViewModel:ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         private ObservableCollection<Note> notes;
         public LocalNavigation navigation;
@@ -23,7 +23,7 @@ namespace UE2_Notes.ViewModel
             get
             {
                 notes.Clear();
-                foreach (var nt in NoteData.Notes.Where(x => x.Name.ToUpper().StartsWith(SearchString.ToUpper())).ToList())
+                foreach (var nt in NoteData.Notes.Where(x => x.Name.ToUpper().StartsWith(SearchString.ToUpper())).OrderByDescending(x=>x.Date).Take(NoteData.Max_Notes).ToList())
                     notes.Add(nt);
                 return notes;
             }
@@ -35,28 +35,17 @@ namespace UE2_Notes.ViewModel
             set
             {
                 searchString = value;
+               // RaisePropertyChanged(nameof(Notes));
             }
         }
         public MainViewModel()
         {
+            if(navigation==null)
             navigation = new LocalNavigation();
-            NoteData.Max_Notes = 100;
+            if(notes==null)
             notes = new ObservableCollection<Note>();
+            if(searchString==null)
             SearchString = "";
-            /*this.PropertyChanged += (sender, args) =>
-            {
-                if (args.PropertyName == "SearchFor") RaisePropertyChanged(nameof(notes));
-            };*/
-            /*var n = new Note();
-            n.Name = "Einkaufsliste";
-            n.Notes = "Eier, Milch, Gemüse";
-            n.Date = DateTime.Now;
-            NoteData.Notes.Add(n);
-            n = new Note();
-            n.Name = "Wichtiges";
-            n.Notes = "Klaus abholen, Tanken fahren, Klaus abholen, Tanken fahren, Klaus abholen, Tanken fahren, Klaus abholen, Tanken fahren";
-            n.Date = DateTime.Now;
-            NoteData.Notes.Add(n);*/
         }
         public void NewNote()
         {
@@ -78,6 +67,7 @@ namespace UE2_Notes.ViewModel
         {
             NoteData.RemoveNote(SelectedNote);
             SelectedNote = null;
+            RaisePropertyChanged(nameof(Notes));
         }
     }
 }

@@ -22,6 +22,15 @@ namespace UE2_Notes.ViewModel
                 MyNote = NoteData.SelectedNote.Notes;
             }
         }
+        public bool isSavable
+        {
+            get
+            {
+                if (Header == null || MyNote == null)
+                    return false;
+                return Header.Length > 3 && MyNote.Length > 3;
+            }
+        }
         private bool isEdit;
         public LocalNavigation navigation;
         public string Header { get; set; }
